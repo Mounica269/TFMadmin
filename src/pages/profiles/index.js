@@ -68,6 +68,30 @@ const Profiles = (props) => {
       selector: (row) => row.plan?.name,
     },
     {
+      name: "Expiry Date",
+      selector: (row) => {
+        return row.subscription?.expiresAt
+          ? moment(row.subscription.expiresAt).format('MMM DD, YYYY')
+          : 'N/A';
+      },
+    },
+    {
+      name: "Days Remaining",
+      selector: (row) => {
+        const daysRemaining = row.subscription?.daysRemaining;
+        if (daysRemaining === null || daysRemaining === undefined) {
+          return 'No Plan';
+        }
+        if (daysRemaining < 0) {
+          return `Expired ${Math.abs(daysRemaining)}d ago`;
+        }
+        if (daysRemaining === 0) {
+          return 'Expires Today';
+        }
+        return `${daysRemaining} days`;
+      },
+    },
+    {
       name: "Created By",
       selector: (row) => row?.createdBy,
     },
@@ -558,6 +582,7 @@ const Profiles = (props) => {
     if (status !== "") {
       filterObj.status = Number(status);
     }
+
     if (status === "All" || status === "") {
       // filterObj.status = undefined
       delete filterObj.status;
@@ -765,6 +790,39 @@ const Profiles = (props) => {
                 handlePageChange={handlePageChange}
                 handlePerRowsChange={handlePerRowsChange}
                 progressPending={spinner}
+                conditionalRowStyles={[
+                  {
+                    when: row => {
+                      const daysRemaining = row.subscription?.daysRemaining;
+                      if (daysRemaining === null || daysRemaining === undefined) return false;
+                      return daysRemaining < 0 || daysRemaining <= 7;
+                    },
+                    style: {
+                      backgroundColor: '#FFE0B2',
+                      borderLeft: '4px solid #FB8C00'
+                    }
+                  },
+                  {
+                    when: row => {
+                      const daysRemaining = row.subscription?.daysRemaining;
+                      return daysRemaining > 7 && daysRemaining <= 15;
+                    },
+                    style: {
+                      backgroundColor: '#FFF9C4',
+                      borderLeft: '4px solid #FDD835'
+                    }
+                  },
+                  {
+                    when: row => {
+                      const daysRemaining = row.subscription?.daysRemaining;
+                      return daysRemaining > 15 && daysRemaining <= 30;
+                    },
+                    style: {
+                      backgroundColor: '#F1F8E9',
+                      borderLeft: '4px solid #AED581'
+                    }
+                  }
+                ]}
               />
             </Card.Body>
           </Card>

@@ -169,3 +169,7 @@ export const OLD_SITE_USER_GET_BY_ID = "oldsiteuser/";
 //Notifications
 export const NOTIFICATION_FILTER = "profile/notification";
 export const UPDATE_NOTIFICATION = "profile/notification/"
+
+//Subscription Expiry Report
+export const REPORT_SUBSCRIPTION_EXPIRY = "report/subscription-expiry";
+export const EXPORT_SUBSCRIPTION_EXPIRY = "report/export-subscription-expiry";
