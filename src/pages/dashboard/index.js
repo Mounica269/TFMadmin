@@ -9,6 +9,7 @@ import HighchartsExport from "highcharts/modules/exporting";
 import { Col, Row } from "react-bootstrap";
 import { Link } from "react-router-dom";
 import { IMAGE_APPROVALS_PATH } from "pages/routes/routes";
+import ExpiringSubscriptionsWidget from "components/dashboard/ExpiringSubscriptionsWidget";
 
 Highcharts3d(Highcharts);
 HighchartsExport(Highcharts);
@@ -706,6 +707,13 @@ const Dashboard = (props) => {
             highcharts={Highcharts}
             options={usersSubScription}
           />
+        </Col>
+      </Row>
+
+      {/* Expiring Subscriptions Widget */}
+      <Row className="mt-4">
+        <Col md={12}>
+          <ExpiringSubscriptionsWidget />
         </Col>
       </Row>
     </div>

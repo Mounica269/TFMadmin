@@ -3,6 +3,7 @@ import { useState } from "react";
 import BreadCrumb from "components/common/breadcrumb";
 import Payments from "components/reports/payments";
 import Users from "components/reports/users";
+import SubscriptionExpiryReport from "components/reports/SubscriptionExpiryReport";
 
 const Reports = () => {
 
@@ -25,13 +26,18 @@ const Reports = () => {
                                             <Nav.Item onClick={() => setEventKeyState("users")} >
                                                 <Nav.Link eventKey="users">Users</Nav.Link>
                                             </Nav.Item>
+                                            <Nav.Item onClick={() => setEventKeyState("subscription-expiry")} >
+                                                <Nav.Link eventKey="subscription-expiry">Subscription Expiry</Nav.Link>
+                                            </Nav.Item>
                                         </Nav>
                                     </Col>
                                 </Row>
                                 {eventKeyState === "payments" ? (
                                     <Payments />
-                                ) : (
+                                ) : eventKeyState === "users" ? (
                                     <Users />
+                                ) : (
+                                    <SubscriptionExpiryReport />
                                 )}
                             </Card.Body>
                         </Card>

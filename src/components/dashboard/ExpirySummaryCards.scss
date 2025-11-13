@@ -1,0 +1,55 @@
+.expiry-summary-cards {
+  .card {
+    transition: all 0.3s ease;
+    border-width: 2px;
+
+    &.cursor-pointer {
+      cursor: pointer;
+    }
+
+    &.hover-shadow:hover {
+      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+      transform: translateY(-4px);
+    }
+
+    .card-body {
+      padding: 1.5rem;
+    }
+
+    h3 {
+      font-size: 2.5rem;
+      font-weight: 700;
+      line-height: 1;
+    }
+
+    &.border-danger:hover {
+      border-color: #dc3545 !important;
+      background-color: #fff5f5;
+    }
+
+    &.border-warning:hover {
+      border-color: #ffc107 !important;
+      background-color: #fffbf0;
+    }
+
+    &.border-info:hover {
+      border-color: #0dcaf0 !important;
+      background-color: #f0f9ff;
+    }
+  }
+
+  // Responsive
+  @media (max-width: 768px) {
+    .card {
+      margin-bottom: 1rem;
+
+      h3 {
+        font-size: 2rem;
+      }
+
+      .bi {
+        font-size: 2rem !important;
+      }
+    }
+  }
+}

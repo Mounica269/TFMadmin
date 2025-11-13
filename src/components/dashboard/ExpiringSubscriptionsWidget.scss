@@ -1,0 +1,93 @@
+.expiring-subscriptions-widget {
+  margin-bottom: 2rem;
+
+  .card {
+    border: 1px solid #e0e0e0;
+
+    .card-header {
+      border-bottom: 2px solid #f0f0f0;
+      padding: 1.25rem 1.5rem;
+
+      h5 {
+        color: #333;
+        font-weight: 600;
+        font-size: 1.25rem;
+      }
+
+      .btn {
+        white-space: nowrap;
+      }
+    }
+
+    .card-body {
+      padding: 1.5rem;
+    }
+  }
+
+  .btn-group {
+    .btn {
+      padding: 0.5rem 1.25rem;
+      font-weight: 500;
+      transition: all 0.2s ease;
+
+      &:hover {
+        transform: translateY(-1px);
+      }
+
+      &.btn-danger, &.btn-warning, &.btn-info {
+        box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+      }
+    }
+  }
+
+  // Spinning icon animation
+  .spin {
+    animation: spin 1s linear infinite;
+  }
+
+  @keyframes spin {
+    from {
+      transform: rotate(0deg);
+    }
+    to {
+      transform: rotate(360deg);
+    }
+  }
+
+  // Gap utility for buttons (Bootstrap 5 style)
+  .gap-2 {
+    gap: 0.5rem;
+  }
+
+  // Responsive
+  @media (max-width: 768px) {
+    .card-header {
+      flex-direction: column;
+      align-items: flex-start !important;
+
+      > div:last-child {
+        margin-top: 1rem;
+        width: 100%;
+
+        .d-flex {
+          width: 100%;
+          justify-content: space-between;
+        }
+
+        .btn {
+          flex: 1;
+        }
+      }
+    }
+
+    .btn-group {
+      width: 100%;
+
+      .btn {
+        flex: 1;
+        font-size: 0.875rem;
+        padding: 0.5rem 0.75rem;
+      }
+    }
+  }
+}

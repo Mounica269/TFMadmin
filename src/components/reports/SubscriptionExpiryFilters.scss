@@ -1,0 +1,35 @@
+.subscription-expiry-filters {
+  .filter-panel {
+    background: #f8f9fa;
+    border: 1px solid #dee2e6;
+    border-radius: 0.375rem;
+    padding: 1.5rem;
+
+    .form-label {
+      font-weight: 500;
+      font-size: 0.875rem;
+      color: #495057;
+      margin-bottom: 0.5rem;
+    }
+
+    .react-select {
+      font-size: 0.875rem;
+    }
+
+    .active-filters {
+      padding: 1rem;
+      background: #fff;
+      border-radius: 0.25rem;
+      border: 1px solid #e3e6ea;
+
+      .badge {
+        padding: 0.5rem 0.75rem;
+        font-weight: 700;
+        background-color: transparent !important;
+        color: #2d3748;
+        border: 2px solid #cbd5e0;
+        border-radius: 0.375rem;
+      }
+    }
+  }
+}
