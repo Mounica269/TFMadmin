@@ -32,12 +32,12 @@ COPY --from=build /app/build /usr/share/nginx/html
 # Copy custom nginx config for React Router
 COPY nginx.conf /etc/nginx/conf.d/default.conf
 
-# Copy entrypoint script
-COPY docker-entrypoint.sh /docker-entrypoint.sh
-RUN chmod +x /docker-entrypoint.sh
+# Copy entrypoint script (renamed to avoid conflict with nginx's entrypoint)
+COPY docker-entrypoint.sh /env-inject.sh
+RUN chmod +x /env-inject.sh
 
 # Expose port 80
 EXPOSE 80
 
 # Inject env vars at runtime then start nginx
-CMD ["/bin/sh", "-c", "/docker-entrypoint.sh && nginx -g 'daemon off;'"]
+ENTRYPOINT ["/env-inject.sh"]
